@@ -6,10 +6,12 @@
           <div class="p-4">
             <div class="flex items-start">
               <div class="flex-shrink-0">
-                <CheckCircleIcon class="h-6 w-6 text-green-400" aria-hidden="true" />
+                <CheckCircleIcon v-if="type === 'success'" class="h-6 w-6 text-green-400" aria-hidden="true" />
+                <XCircleIcon v-if="type === 'error'" class="h-6 w-6 text-red-400" aria-hidden="true" />
+                <ExclamationCircleIcon v-if="type === 'warn'" class="h-6 w-6 text-yellow-400" aria-hidden="true" />
               </div>
               <div class="ml-3 w-0 flex-1 pt-0.5">
-                <p class="text-sm font-medium text-gray-900">{{ message }}</p>
+                <p class="text-sm font-medium text-gray-900" :class="{'text-red-900': type === 'error'}">{{ message }}</p>
               </div>
               <div class="ml-4 flex flex-shrink-0">
                 <button type="button" @click="emit('remove')" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
@@ -28,12 +30,16 @@
 <script setup>
 
 import { ref } from 'vue'
-import { CheckCircleIcon } from '@heroicons/vue/24/outline'
+import { CheckCircleIcon, XCircleIcon, ExclamationCircleIcon } from '@heroicons/vue/24/outline'
 import { XMarkIcon } from '@heroicons/vue/20/solid'
 
 const props = defineProps({
     message: {
         type: String,
+    },
+    type: {
+      type: String,
+      default: 'success'
     }
 });
 

@@ -3,20 +3,26 @@
         <ToastItem v-for="(item, index) in items" 
             :key="index"
             :message="item.message"
-            @remove="remove(index)"
+            @remove="this.toastStore.remove(index)"
         />
     </div>
 </template>
 
-<script setup>
-import { reactive } from '@vue/reactivity';
+<script>
 import ToastItem from './ToastItem.vue'
 
-
-const items = reactive([])
-
-function remove(index) {
-    items.splice(index, 1);
+export default {
+    components: {
+        ToastItem
+    },
+    computed: {
+        items() {
+            return this.toastStore.items
+        }
+    },
+    methods: {
+        
+    },
 }
 
 </script>

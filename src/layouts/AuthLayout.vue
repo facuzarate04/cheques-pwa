@@ -113,10 +113,10 @@
     UsersIcon,
     XMarkIcon,
     } from '@heroicons/vue/24/outline'
-    import ToastList from '../components/Toasts/ToastList.vue'
+    import ToastList from '@/components/Toasts/ToastList.vue'
 
     const navigation = [
-        { name: 'Dashboard', href: 'home', icon: HomeIcon, current: true },
+        /* { name: 'Dashboard', href: 'home', icon: HomeIcon, current: true }, */
         { name: 'Checks', href: 'checks.index', icon: UsersIcon, current: false },
     ]
 
